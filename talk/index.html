@@ -84,7 +84,7 @@
                         src='http://mukey-wang.github.io/media/images/music.png' alt="音乐播放器" class="musicbtn"></i></a>
         </div>
         <div class="avatar-border">
-            <img src="http://mukey-wang.github.io/images/avatar.png?v=1623224336888" class="avatar">
+            <img src="http://mukey-wang.github.io/images/avatar.png?v=1623226035199" class="avatar">
         </div>
         <div class="sitename">Mukey&#39;s Blog</div>
         <span class="description" data-text='["今朝有酒今朝醉，明日愁来明日愁。"]'>&nbsp;</span>
@@ -106,7 +106,7 @@
     <div class="share-button">
         <span>飞鸽传书~</span>
         
-        <a href="https://github.com/mukey-wang/" target="_blank"><i style="font-size: 20px;"><img class="icon"
+        <a href="https://github.com/mukey-wang" target="_blank"><i style="font-size: 20px;"><img class="icon"
                     src="http://mukey-wang.github.io/media/images/github.png" alt=""></i></a>
         
         
@@ -196,8 +196,7 @@
 
 <body>
     <div class="foot">
-        <div id="footinfo">
-           访问量是假的！
+        <div id="footinfo">访问量是假的！
             <div>
                 
                 <div id="sitegotimeDate">载入天数...</div>
@@ -218,7 +217,7 @@
                 </div>
                 
             </div>
-            <div class="copyright" style="color:white;text-align: center;">备案号: 浙ICP备09109183号-25
+            <div class="copyright" style="color:white;text-align: center;">Copyright © 2020  备案号: 鄂ICP备...号
             </div>
         </div>
 
@@ -884,9 +883,9 @@ menulist.eq(i).show();
 <script>
     var bgchoice = "link";
     if(bgchoice=='default')
-        var plbgurl = "\media\images\custom-mobileplbgimage.jpg"
+        var plbgurl = ""
     else  
-        var plbgurl = "https://ericamblog.oss-cn-shanghai.aliyuncs.com/2020/r7zm17%20%281%29.jpg"
+        var plbgurl = "https://ericamblog.oss-cn-shanghai.aliyuncs.com/2020/54lqq0%20%281%29.jpg"
     $(".plbg").attr("src",plbgurl);
     $(".plbg").fadeIn(200);
 </script>
@@ -909,6 +908,69 @@ menulist.eq(i).show();
                 <!--------------- 顶部菜单栏html👆--------->
             </div>
             <!-- aplayer播放器加载👇 -->
+            
+                <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+</head>
+
+<body>
+    <div class="miniMode">
+        <meting-js id="myaplayer" server="netease" type="playlist" fixed="true" order="default" muted="muted">
+        </meting-js>
+    </div>
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<script>
+    function aplayerInit() {
+        var aplayerid = "70065431";
+        var aplayerserver = "netease";
+        var aplayerorder = "random";
+        var aplayerautoplay = "true";
+        var aplayer = $("#myaplayer");
+        aplayer.attr("server", aplayerserver);
+        aplayer.attr("id", aplayerid);
+        aplayer.attr("order", aplayerorder);
+        if (aplayerautoplay == "true")
+            aplayer.attr("autoplay", "true");
+    }
+    aplayerInit();
+</script>
+
+<script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/Aplayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+<script>
+    function aplayerbtnInit() {
+        var player = document.querySelectorAll('meting-js')[0].aplayer;
+        if(player==undefined)return false;
+        player.lrc.hide();
+        var mbabtn = $("#mbaplayer");
+        if (player.paused == false) {
+            mbabtn.removeClass("fa-play-circle-o");
+            mbabtn.addClass("fa-pause-circle");
+        } else {
+            mbabtn.addClass("fa-play-circle-o");
+            mbabtn.removeClass("fa-pause-circle");
+        }
+    }
+
+    function aplayerPlay() {
+        var player = document.querySelectorAll('meting-js')[0].aplayer;
+        var mbabtn = $("#mbaplayer");
+        if (player.paused == true) {
+            player.play();
+            mbabtn.removeClass("fa-play-circle-o");
+            mbabtn.addClass("fa-pause-circle");
+        } else {
+            player.pause();
+            mbabtn.addClass("fa-play-circle-o");
+            mbabtn.removeClass("fa-pause-circle");
+        }
+    }
+</script>
             
             <!-- aplayer播放器加载👆 -->
         </div>
