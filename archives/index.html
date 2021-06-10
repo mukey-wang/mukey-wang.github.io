@@ -83,7 +83,7 @@
                         src='https://mukey-wang.github.io/media/images/music.png' alt="音乐播放器" class="musicbtn"></i></a>
         </div>
         <div class="avatar-border">
-            <img src="https://mukey-wang.github.io/images/avatar.png?v=1623294371988" class="avatar">
+            <img src="https://mukey-wang.github.io/images/avatar.png?v=1623303261420" class="avatar">
         </div>
         <div class="sitename">Mukey&#39;s Blog</div>
         <span class="description" data-text='["今朝有酒今朝醉，明日愁来明日愁。"]'>&nbsp;</span>
@@ -92,7 +92,7 @@
             <span class="siteinfo">标签</span>
         </div>
         <div class="siteinfocontainer">
-            <span class="siteinfo">1</span>
+            <span class="siteinfo">0</span>
             <span class="siteinfo">0</span>
         </div>
         
@@ -134,15 +134,6 @@
             <a data-pjax href="/" class="menubutton" style="margin-right: 15px;">
                 <i><img class="icon menuicon" src="" alt="首页"></i>&nbsp;<span
                     data-text="首页">首页</span>
-            </a>
-        </div>
-        
-        
-        
-        <div class="mchocie description">
-            <a data-pjax href="/archives" class="menubutton" style="margin-right: 15px;">
-                <i><img class="icon menuicon" src="" alt="归档"></i>&nbsp;<span
-                    data-text="归档">归档</span>
             </a>
         </div>
         
@@ -216,7 +207,7 @@
                 </div>
                 
             </div>
-            <div class="copyright" style="color:white;text-align: center;">Copyright © 2020  备案号: 鄂ICP备...号
+            <div class="copyright" style="color:white;text-align: center;">Copyright © 2021  备案号: 浙ICP备21109183号
             </div>
         </div>
 
@@ -310,12 +301,12 @@
     
     
     <script>
-        let shareChoice = false
+        let shareChoice = true
     </script>
     
     
     <script>
-        let donateChoice = false
+        let donateChoice = true
     </script>
     
     
@@ -326,13 +317,6 @@
     <script>let postsnum = 0;</script>
     <div id="side-posttitle" style="display: none;">
         
-    
-    测试
-    <script>
-        postsnum += 1
-    </script>
-    
-    
     </div>
     <!------ 根据自定义配置声明变量👆 --------------------->
 
@@ -344,7 +328,19 @@
     
     <script>
         var iconname = "首页";
-        var iconurl = "";
+        var iconurl = "Home";
+        icondict[iconname] = iconurl;
+    </script>
+    
+    <script>
+        var iconname = "标签";
+        var iconurl = "Tag";
+        icondict[iconname] = iconurl;
+    </script>
+    
+    <script>
+        var iconname = "关于";
+        var iconurl = "About";
         icondict[iconname] = iconurl;
     </script>
     
@@ -811,14 +807,6 @@ menulist.eq(i).show();
         
         
         <li>
-          <a data-pjax href="/archives">
-            归档
-          </a>
-        </li>
-        
-        
-        
-        <li>
           <a data-pjax href="/tags">
             标签
           </a>
@@ -888,23 +876,6 @@ menulist.eq(i).show();
     <div class="archives-bg"></div>
     <div class="archives-content">
         
-        
-        <div class="archives-year">2021</div>
-        <ul>
-            
-            
-            <li><span></span>
-                <div>
-                  <a data-pjax href="https://mukey-wang.github.io/post/ce-shi/" class="post">
-                    <div class="archives-title">测试</div>
-                    <div class="archives-time">2021-06-09</div>
-                </a>
-                    
-                </div>
-            </li>
-            
-            
-        </ul>
         
     </div>
 </body">
