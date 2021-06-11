@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://mukey-wang.github.io</id>
     <title>Mukey&apos;s Blog</title>
-    <updated>2021-06-10T07:37:50.770Z</updated>
+    <updated>2021-06-11T01:06:35.263Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://mukey-wang.github.io"/>
     <link rel="self" href="https://mukey-wang.github.io/atom.xml"/>
@@ -10,6 +10,51 @@
     <logo>https://mukey-wang.github.io/images/avatar.png</logo>
     <icon>https://mukey-wang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Mukey&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[EasyAnticheat的内存特征算法]]></title>
+        <id>https://mukey-wang.github.io/post/easyanticheat-de-nei-cun-te-zheng-suan-fa/</id>
+        <link href="https://mukey-wang.github.io/post/easyanticheat-de-nei-cun-te-zheng-suan-fa/">
+        </link>
+        <updated>2021-06-11T00:49:24.000Z</updated>
+        <content type="html"><![CDATA[<p>anticheat一般都会有内存扫描的操作，来与数据库中的非法程序进行对比。<br>
+在进行扫描前，ac会先判断地址是否正确<br>
+<img src="https://mukey-wang.github.io/post-images/1623372850036.png" alt="" loading="lazy"><br>
+判断是否是用户态的可读地址<br>
+<img src="https://mukey-wang.github.io/post-images/1623372882447.png" alt="" loading="lazy"><br>
+如果没问题，则进行内存特征的操作<br>
+<img src="https://mukey-wang.github.io/post-images/1623372896229.png" alt="" loading="lazy"><br>
+根据这个这个表，很容易知道这是hde的反汇编引擎,和crc的哈希<br>
+<img src="https://mukey-wang.github.io/post-images/1623372953366.png" alt="" loading="lazy"><br>
+<img src="https://mukey-wang.github.io/post-images/1623372969342.png" alt="" loading="lazy"><br>
+<img src="https://mukey-wang.github.io/post-images/1623372985934.png" alt="" loading="lazy"></p>
+<h2 id="具体步骤">具体步骤:</h2>
+<blockquote>
+<p>1.eac先根据获取当前附加进程的架构x86,还是x64<br>
+<img src="https://mukey-wang.github.io/post-images/1623373059764.png" alt="" loading="lazy"><br>
+2.接着开始循环遍历内存块,直到找到特定机器码起始的地址<br>
+<img src="https://mukey-wang.github.io/post-images/1623373063231.png" alt="" loading="lazy"><br>
+可以看到，x64是寻找sub rsp,xxxx /push rbp或者mov rbp,rsp 。x86则是寻找push ebp /mov ebp,esp<br>
+3.如果找不到，则+0x10个字节继续寻找。如果找到了，先计算当前指令的crc(x64 4个字节,x86 3个字节,这里crc的初始值是0)，接着开始遍历下面的内存<br>
+<img src="https://mukey-wang.github.io/post-images/1623373149012.png" alt="" loading="lazy"><br>
+从上面找到地址来看，判断架构，x先用hde尝试获取指令长度，如果反汇编成功，64则判断是否是否0x48或0x0f开头，则crc 2个字节，否则只crc一个字节。x86同理,直到碰到inst_filter中的opcode为止,输出看一下<br>
+<img src="https://mukey-wang.github.io/post-images/1623373493467.png" alt="" loading="lazy"><br>
+碰到这些opcode则结束循环，并把计算的crc保存到全局数组中<br>
+<img src="https://mukey-wang.github.io/post-images/1623373167981.png" alt="" loading="lazy"><br>
+下面来仿写这个算法试试,对ntdll的.text段进行提取特征<br>
+<img src="https://mukey-wang.github.io/post-images/1623373501585.png" alt="" loading="lazy"></p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[仿制Getting Over It]]></title>
+        <id>https://mukey-wang.github.io/post/fang-zhi-getting-over-it/</id>
+        <link href="https://mukey-wang.github.io/post/fang-zhi-getting-over-it/">
+        </link>
+        <updated>2021-06-10T07:42:24.000Z</updated>
+        <content type="html"><![CDATA[<p>项目地址：https://github.com/mukey-wang/GettingOverIt<br>
+教程之后在写😇</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[从零开始数据结构1——基础算法]]></title>
         <id>https://mukey-wang.github.io/post/cong-ling-kai-shi-shu-ju-jie-gou-1-ji-chu-suan-fa/</id>
